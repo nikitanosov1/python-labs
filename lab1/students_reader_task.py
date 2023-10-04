@@ -397,6 +397,6 @@ if __name__ == '__main__':
     students = load_students_json('lab1/saved_students.json')
     
     # Проверка csv
-    # students = load_students_csv('lab1/students.csv')
-    # save_students_csv('lab1/saved_students.csv', students)
-    # students = load_students_csv('lab1/saved_students.csv')
+    students = load_students_csv('lab1/students.csv')
+    save_students_csv('lab1/saved_students.csv', students)
+    students = load_students_csv('lab1/saved_students.csv')
