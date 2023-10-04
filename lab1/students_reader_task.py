@@ -1,3 +1,4 @@
+import csv
 from typing import Union, List, Dict
 from collections import namedtuple
 from datetime import date
@@ -39,7 +40,6 @@ class LabWorkSession(namedtuple('LabWorkSession', 'presence, lab_work_number, la
             param: lab_work_mark: оценка за л.р.(int)
             param: lab_work_date: дата л.р.(date)
         """
-
         return True
 
     def __str__(self) -> str:
@@ -53,6 +53,8 @@ class LabWorkSession(namedtuple('LabWorkSession', 'presence, lab_work_number, la
                     "date":          "15:12:23"
             }
         """
+
+        
         data = {
             'presence': self.presence,
             'lab_work_n': self.lab_work_number,
@@ -61,6 +63,14 @@ class LabWorkSession(namedtuple('LabWorkSession', 'presence, lab_work_number, la
         }
         return json.dumps(data, indent=4, ensure_ascii=False)
 
+    def convert_to_dict_with_custom_field_names(self, presence_name, lab_work_number_name, lab_work_mark_name, lab_work_date_name) -> dict:
+        return {
+            presence_name: self.presence,
+            lab_work_number_name: self.lab_work_number,
+            lab_work_mark_name: self.lab_work_mark,
+            lab_work_date_name: self.lab_work_date
+        }
+        
 
 
 class Student:
@@ -137,7 +147,7 @@ class Student:
             'surname': self._surname,
             'group': self._group,
             'subgroup': self._subgroup,
-            'lab_work_sessions':  [lab_work_session._asdict() for lab_work_session in self._lab_work_sessions],
+            'lab_works_sessions':  [lab_work_session.convert_to_dict_with_custom_field_names("presence", "lab_work_n", "lab_work_mark","date") for lab_work_session in self._lab_work_sessions],
         }
         return json.dumps(data, indent=4, ensure_ascii=False)
 
@@ -191,7 +201,7 @@ class Student:
         self.surname = val
 
     @property
-    def lab_work_sessions(self):
+    def lab_works_sessions(self):
         """
         Метод доступа для списка лабораторных работ, которые студент посетил или не посетил
         """
@@ -247,13 +257,40 @@ LAB_WORK_MARK = 8
 
 
 def load_students_csv(file_path: str) -> Union[List[Student], None]:
-    # csv header
-    #     0    |   1  |   2   |   3  |    4    |  5  |    6    |        7       |       8     |
-    # unique_id; name; surname; group; subgroup; date; presence; lab_work_number; lab_work_mark
-    assert isinstance(file_path, str)
-    if not os.path.exists(file_path):
-        return None
-    ...
+     assert isinstance(file_path, str)
+     if not os.path.exists(file_path):
+         return None
+
+     students = []
+
+     with open(file_path, 'r', encoding='utf-8') as file:
+         csv_reader = csv.reader(file, delimiter=';')
+         header = next(csv_reader)  # Пропускаем заголовок
+
+         for row in csv_reader:
+             unique_id = int(row[UNIQUE_ID])
+             name = row[STUD_NAME]
+             surname = row[STUD_SURNAME]
+             group = int(row[STUD_GROUP])
+             subgroup = int(row[STUD_SUBGROUP])
+
+             student = Student(unique_id, name, surname, group, subgroup)
+
+             # Добавляем информацию о лабораторных работах
+             lab_work_preDate = row[LAB_WORK_DATE].split(':')[::-1]
+             if len(lab_work_preDate[0]) < 4:
+                 lab_work_preDate[0] = "20" + lab_work_preDate[0]
+             lab_work_date = date(*map(int, lab_work_preDate))
+             presence = bool(int(row[STUD_PRESENCE]))
+             lab_work_number = int(row[LAB_WORK_NUMBER])
+             lab_work_mark = int(row[LAB_WORK_MARK])
+
+             lab_work_session = LabWorkSession(presence, lab_work_number, lab_work_mark, lab_work_date)
+             student.append_lab_work_session(lab_work_session)
+
+             students.append(student)
+
+     return students
 
 
 def load_students_json(file_path: str) -> Union[List[Student], None]:
@@ -262,7 +299,7 @@ def load_students_json(file_path: str) -> Union[List[Student], None]:
     Ошибка создания экземпляра класса Student не должна приводить к поломке всего чтения.
     """
     students = []
-    with open(file_path) as f:
+    with open(file_path, encoding="utf8") as f:
         file_json = json.load(f)
         for student_json in file_json['students']:
             student = _load_student(student_json)
@@ -276,16 +313,34 @@ def save_students_json(file_path: str, students: List[Student]):
     """
     Запись списка студентов в json файл
     """
-    with open(file_path, 'w') as file:
+    with open(file_path, 'w', encoding="utf8") as file:
         sep = ',\n'
         print(f"{{\n\t\"students\":[\n{sep.join(str(v) for v in students)}]\n}}", file=file)
-
 
 def save_students_csv(file_path: str, students: List[Student]):
     """
     Запись списка студентов в csv файл
     """
-    ...
+    assert isinstance(file_path, str)
+
+    with open(file_path, 'w', encoding='utf-8', newline='') as file:
+        csv_writer = csv.writer(file, delimiter=';')
+
+        # Записываем заголовок
+        header = [
+            "unique_id", "name", "surname", "group", "subgroup",
+            "date", "presence", "lab_work_number", "lab_work_mark"
+        ]
+        csv_writer.writerow(header)
+
+        for student in students:
+            for session in student._lab_work_sessions:
+                row = [
+                    student._unique_id, student._name, student._surname, student._group, student._subgroup,
+                    session.lab_work_date.strftime("%d:%m:%Y"), int(session.presence),
+                    session.lab_work_number, session.lab_work_mark
+                ]
+                csv_writer.writerow(row)
 
 if __name__ == '__main__':
     # Задание на проверку json читалки:
@@ -295,19 +350,12 @@ if __name__ == '__main__':
     # Задание на проверку csv читалки:
     # 1.-3. аналогично
 
-    students = load_students_json('students.json')
-    print(students)
-    save_students_json('qwe.json', students)
-    # for s in students:
-    #     print(s)
-    # students = save_students_json('students_saved.json')
-    # load_students_json('students_saved.json', students)
+    # Проверка json
+    students = load_students_json('lab1/students.json')
+    save_students_json('lab1/saved_students.json', students)
+    students = load_students_json('lab1/saved_students.json')
     
-    # students = load_students_csv('students.csv')
-    # students = save_students_csv('students_saved.csv')
-    # load_students_csv('students_saved.csv', students)
-    
-    # for s in students:
-    #     print(s)
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    # Проверка csv
+    students = load_students_csv('lab1/students.csv')
+    save_students_csv('lab1/saved_students.csv', students)
+    students = load_students_csv('lab1/saved_students.csv')
