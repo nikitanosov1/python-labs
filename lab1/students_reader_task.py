@@ -40,6 +40,14 @@ class LabWorkSession(namedtuple('LabWorkSession', 'presence, lab_work_number, la
             param: lab_work_mark: оценка за л.р.(int)
             param: lab_work_date: дата л.р.(date)
         """
+        if not isinstance(presence, bool):
+            return False
+        if not isinstance(lab_work_number, int) or lab_work_number < 0:
+            return False
+        if not isinstance(lab_work_mark, int) or lab_work_mark < 0 or lab_work_mark > 5:
+            return False
+        if not isinstance(lab_work_date, date):
+            return False
         return True
 
     def __str__(self) -> str:
@@ -54,12 +62,11 @@ class LabWorkSession(namedtuple('LabWorkSession', 'presence, lab_work_number, la
             }
         """
 
-        
         data = {
             'presence': self.presence,
             'lab_work_n': self.lab_work_number,
             'lab_work_mark': self.lab_work_mark,
-            'date': self.lab_work_date,
+            'date': self.lab_work_date.strftime("%d:%m:%Y"),
         }
         return json.dumps(data, indent=4, ensure_ascii=False)
 
@@ -68,11 +75,9 @@ class LabWorkSession(namedtuple('LabWorkSession', 'presence, lab_work_number, la
             presence_name: self.presence,
             lab_work_number_name: self.lab_work_number,
             lab_work_mark_name: self.lab_work_mark,
-            lab_work_date_name: self.lab_work_date
+            lab_work_date_name: self.lab_work_date.strftime("%d:%m:%Y")
         }
         
-
-
 class Student:
     __slots__ = ('_unique_id', '_name', '_surname', '_group', '_subgroup', '_lab_work_sessions')
 
@@ -85,14 +90,20 @@ class Student:
             param: subgroup: номер подгруппы (int)
         """
         if not self._build_student(unique_id, name, surname, group, subgroup):
-            raise ValueError(...)
+            raise ValueError(f"Student ::"
+                             f"incorrect args :\n"
+                             f"unique_id : {unique_id},\n"
+                             f"name      : {name},\n"
+                             f"surname   : {surname},\n"
+                             f"group     : {group},\n"
+                             f"subgroup  : {subgroup}")
     
         self._unique_id = unique_id
         self._name = name
         self._surname = surname
         self._group = group
         self._subgroup = subgroup
-        self._lab_work_sessions = []
+        self._lab_work_sessions: List[LabWorkSession] = []
 
     def _build_student(self, unique_id: int, name: str, surname: str, group: int, subgroup: int) -> bool:
         """
@@ -102,6 +113,16 @@ class Student:
             param: group: номер группы в которой студент обучается (int)
             param: subgroup: номер подгруппы (int)
         """
+        if not isinstance(unique_id, int) or unique_id < 0:
+            return False
+        if not isinstance(name, str) or not name:
+            return False
+        if not isinstance(surname, str) or not surname:
+            return False
+        if not isinstance(group, int) or group <= 0:
+            return False
+        if not isinstance(subgroup, int) or subgroup <= 0:
+            return False
         return True
 
     def __str__(self) -> str:
@@ -221,11 +242,17 @@ def _load_lab_work_session(json_node) -> LabWorkSession:
         hint: чтобы прочитать дату из формата строки, указанного в json используйте
         date(*tuple(map(int, json_node['date'].split(':'))))
     """
-    return LabWorkSession(presence=json_node['presence'],
-                         lab_work_number=json_node['lab_work_n'],
-                         lab_work_mark=json_node['lab_work_mark'],
-                         lab_work_date=json_node['date'],
-                         )
+    for key in LAB_WORK_SESSION_KEYS:
+        if key not in json_node:
+            raise KeyError()
+
+    preDate = json_node["date"].split(":")[::-1]
+    if len(preDate[0]) < 4:
+        preDate[0] = "20" + preDate[0]
+    return LabWorkSession(True if int(json_node['presence']) == 1 else False,
+                          int(json_node["lab_work_n"]),
+                          int(json_node["lab_work_mark"]),
+                          date(*map(int, preDate)))
 
 
 def _load_student(json_node) -> Student:
@@ -234,12 +261,26 @@ def _load_student(json_node) -> Student:
         Если в процессе создания LabWorkSession у студента случается ошибка,
         создание самого студента ломаться не должно.
     """
-    return Student(unique_id=json_node['unique_id'],
-                   name=json_node['name'],
-                   surname=json_node['surname'],
-                   group=json_node['group'],
-                   subgroup=json_node['subgroup'],
-                   )
+    for key in STUDENT_KEYS:
+        if key not in json_node:
+            raise KeyError(f"load_student:: key \"{key}\" not present in json_node")
+
+    student = Student(json_node['unique_id'], json_node['name'], json_node['surname'], int(json_node['group']), int(json_node['subgroup']))
+
+    for session_data in json_node['lab_works_sessions']:
+        try:
+            session = _load_lab_work_session(session_data)
+            student.append_lab_work_session(session)
+        except ValueError as er:
+            print(er)
+            continue
+        except KeyError as er:
+            print(er)
+            continue
+        except Exception as er:
+            print(er)
+            continue
+    return student
 
 
 # csv header
@@ -356,6 +397,6 @@ if __name__ == '__main__':
     students = load_students_json('lab1/saved_students.json')
     
     # Проверка csv
-    students = load_students_csv('lab1/students.csv')
-    save_students_csv('lab1/saved_students.csv', students)
-    students = load_students_csv('lab1/saved_students.csv')
+    # students = load_students_csv('lab1/students.csv')
+    # save_students_csv('lab1/saved_students.csv', students)
+    # students = load_students_csv('lab1/saved_students.csv')

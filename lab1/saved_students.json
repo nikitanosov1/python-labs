@@ -8,28 +8,52 @@
     "subgroup": 1,
     "lab_works_sessions": [
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 1,
             "lab_work_mark": 3,
-            "date": "15:09:23"
+            "date": "15:09:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 2,
             "lab_work_mark": 2,
-            "date": "15:10:23"
+            "date": "15:10:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 3,
             "lab_work_mark": 4,
-            "date": "15:11:23"
+            "date": "15:11:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 4,
             "lab_work_mark": 2,
-            "date": "15:12:23"
+            "date": "15:12:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 1,
+            "lab_work_mark": 3,
+            "date": "15:09:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 2,
+            "lab_work_mark": 2,
+            "date": "15:10:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 3,
+            "lab_work_mark": 4,
+            "date": "15:11:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 4,
+            "lab_work_mark": 2,
+            "date": "15:12:2023"
         }
     ]
 },
@@ -41,28 +65,52 @@
     "subgroup": 1,
     "lab_works_sessions": [
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 1,
             "lab_work_mark": 2,
-            "date": "15:09:23"
+            "date": "15:09:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 2,
             "lab_work_mark": 4,
-            "date": "15:10:23"
+            "date": "15:10:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 3,
             "lab_work_mark": 4,
-            "date": "15:11:23"
+            "date": "15:11:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 4,
             "lab_work_mark": 3,
-            "date": "15:12:23"
+            "date": "15:12:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 1,
+            "lab_work_mark": 2,
+            "date": "15:09:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 2,
+            "lab_work_mark": 4,
+            "date": "15:10:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 3,
+            "lab_work_mark": 4,
+            "date": "15:11:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 4,
+            "lab_work_mark": 3,
+            "date": "15:12:2023"
         }
     ]
 },
@@ -74,28 +122,52 @@
     "subgroup": 1,
     "lab_works_sessions": [
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 1,
             "lab_work_mark": 4,
-            "date": "15:09:23"
+            "date": "15:09:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 2,
             "lab_work_mark": 2,
-            "date": "15:10:23"
+            "date": "15:10:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 3,
             "lab_work_mark": 3,
-            "date": "15:11:23"
+            "date": "15:11:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 4,
             "lab_work_mark": 3,
-            "date": "15:12:23"
+            "date": "15:12:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 1,
+            "lab_work_mark": 4,
+            "date": "15:09:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 2,
+            "lab_work_mark": 2,
+            "date": "15:10:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 3,
+            "lab_work_mark": 3,
+            "date": "15:11:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 4,
+            "lab_work_mark": 3,
+            "date": "15:12:2023"
         }
     ]
 },
@@ -107,28 +179,52 @@
     "subgroup": 1,
     "lab_works_sessions": [
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 1,
             "lab_work_mark": 3,
-            "date": "15:09:23"
+            "date": "15:09:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 2,
             "lab_work_mark": 3,
-            "date": "15:10:23"
+            "date": "15:10:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 3,
             "lab_work_mark": 2,
-            "date": "15:11:23"
+            "date": "15:11:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 4,
             "lab_work_mark": 2,
-            "date": "15:12:23"
+            "date": "15:12:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 1,
+            "lab_work_mark": 3,
+            "date": "15:09:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 2,
+            "lab_work_mark": 3,
+            "date": "15:10:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 3,
+            "lab_work_mark": 2,
+            "date": "15:11:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 4,
+            "lab_work_mark": 2,
+            "date": "15:12:2023"
         }
     ]
 },
@@ -140,28 +236,52 @@
     "subgroup": 1,
     "lab_works_sessions": [
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 1,
             "lab_work_mark": 4,
-            "date": "15:09:23"
+            "date": "15:09:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 2,
             "lab_work_mark": 2,
-            "date": "15:10:23"
+            "date": "15:10:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 3,
             "lab_work_mark": 2,
-            "date": "15:11:23"
+            "date": "15:11:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 4,
             "lab_work_mark": 2,
-            "date": "15:12:23"
+            "date": "15:12:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 1,
+            "lab_work_mark": 4,
+            "date": "15:09:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 2,
+            "lab_work_mark": 2,
+            "date": "15:10:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 3,
+            "lab_work_mark": 2,
+            "date": "15:11:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 4,
+            "lab_work_mark": 2,
+            "date": "15:12:2023"
         }
     ]
 },
@@ -173,28 +293,52 @@
     "subgroup": 1,
     "lab_works_sessions": [
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 1,
             "lab_work_mark": 3,
-            "date": "15:09:23"
+            "date": "15:09:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 2,
             "lab_work_mark": 3,
-            "date": "15:10:23"
+            "date": "15:10:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 3,
             "lab_work_mark": 3,
-            "date": "15:11:23"
+            "date": "15:11:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 4,
             "lab_work_mark": 3,
-            "date": "15:12:23"
+            "date": "15:12:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 1,
+            "lab_work_mark": 3,
+            "date": "15:09:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 2,
+            "lab_work_mark": 3,
+            "date": "15:10:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 3,
+            "lab_work_mark": 3,
+            "date": "15:11:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 4,
+            "lab_work_mark": 3,
+            "date": "15:12:2023"
         }
     ]
 },
@@ -206,28 +350,52 @@
     "subgroup": 1,
     "lab_works_sessions": [
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 1,
             "lab_work_mark": 3,
-            "date": "15:09:23"
+            "date": "15:09:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 2,
             "lab_work_mark": 2,
-            "date": "15:10:23"
+            "date": "15:10:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 3,
             "lab_work_mark": 4,
-            "date": "15:11:23"
+            "date": "15:11:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 4,
             "lab_work_mark": 3,
-            "date": "15:12:23"
+            "date": "15:12:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 1,
+            "lab_work_mark": 3,
+            "date": "15:09:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 2,
+            "lab_work_mark": 2,
+            "date": "15:10:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 3,
+            "lab_work_mark": 4,
+            "date": "15:11:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 4,
+            "lab_work_mark": 3,
+            "date": "15:12:2023"
         }
     ]
 },
@@ -239,28 +407,52 @@
     "subgroup": 1,
     "lab_works_sessions": [
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 1,
             "lab_work_mark": 2,
-            "date": "15:09:23"
+            "date": "15:09:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 2,
             "lab_work_mark": 3,
-            "date": "15:10:23"
+            "date": "15:10:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 3,
             "lab_work_mark": 4,
-            "date": "15:11:23"
+            "date": "15:11:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 4,
             "lab_work_mark": 4,
-            "date": "15:12:23"
+            "date": "15:12:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 1,
+            "lab_work_mark": 2,
+            "date": "15:09:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 2,
+            "lab_work_mark": 3,
+            "date": "15:10:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 3,
+            "lab_work_mark": 4,
+            "date": "15:11:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 4,
+            "lab_work_mark": 4,
+            "date": "15:12:2023"
         }
     ]
 },
@@ -272,28 +464,52 @@
     "subgroup": 1,
     "lab_works_sessions": [
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 1,
             "lab_work_mark": 4,
-            "date": "15:09:23"
+            "date": "15:09:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 2,
             "lab_work_mark": 3,
-            "date": "15:10:23"
+            "date": "15:10:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 3,
             "lab_work_mark": 4,
-            "date": "15:11:23"
+            "date": "15:11:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 4,
             "lab_work_mark": 3,
-            "date": "15:12:23"
+            "date": "15:12:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 1,
+            "lab_work_mark": 4,
+            "date": "15:09:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 2,
+            "lab_work_mark": 3,
+            "date": "15:10:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 3,
+            "lab_work_mark": 4,
+            "date": "15:11:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 4,
+            "lab_work_mark": 3,
+            "date": "15:12:2023"
         }
     ]
 },
@@ -305,28 +521,52 @@
     "subgroup": 1,
     "lab_works_sessions": [
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 1,
             "lab_work_mark": 3,
-            "date": "15:09:23"
+            "date": "15:09:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 2,
             "lab_work_mark": 2,
-            "date": "15:10:23"
+            "date": "15:10:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 3,
             "lab_work_mark": 3,
-            "date": "15:11:23"
+            "date": "15:11:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 4,
             "lab_work_mark": 4,
-            "date": "15:12:23"
+            "date": "15:12:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 1,
+            "lab_work_mark": 3,
+            "date": "15:09:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 2,
+            "lab_work_mark": 2,
+            "date": "15:10:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 3,
+            "lab_work_mark": 3,
+            "date": "15:11:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 4,
+            "lab_work_mark": 4,
+            "date": "15:12:2023"
         }
     ]
 },
@@ -338,28 +578,52 @@
     "subgroup": 1,
     "lab_works_sessions": [
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 1,
             "lab_work_mark": 3,
-            "date": "15:09:23"
+            "date": "15:09:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 2,
             "lab_work_mark": 4,
-            "date": "15:10:23"
+            "date": "15:10:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 3,
             "lab_work_mark": 3,
-            "date": "15:11:23"
+            "date": "15:11:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 4,
             "lab_work_mark": 2,
-            "date": "15:12:23"
+            "date": "15:12:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 1,
+            "lab_work_mark": 3,
+            "date": "15:09:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 2,
+            "lab_work_mark": 4,
+            "date": "15:10:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 3,
+            "lab_work_mark": 3,
+            "date": "15:11:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 4,
+            "lab_work_mark": 2,
+            "date": "15:12:2023"
         }
     ]
 },
@@ -371,28 +635,52 @@
     "subgroup": 1,
     "lab_works_sessions": [
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 1,
             "lab_work_mark": 4,
-            "date": "15:09:23"
+            "date": "15:09:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 2,
             "lab_work_mark": 3,
-            "date": "15:10:23"
+            "date": "15:10:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 3,
             "lab_work_mark": 2,
-            "date": "15:11:23"
+            "date": "15:11:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 4,
             "lab_work_mark": 3,
-            "date": "15:12:23"
+            "date": "15:12:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 1,
+            "lab_work_mark": 4,
+            "date": "15:09:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 2,
+            "lab_work_mark": 3,
+            "date": "15:10:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 3,
+            "lab_work_mark": 2,
+            "date": "15:11:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 4,
+            "lab_work_mark": 3,
+            "date": "15:12:2023"
         }
     ]
 },
@@ -404,28 +692,52 @@
     "subgroup": 1,
     "lab_works_sessions": [
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 1,
             "lab_work_mark": 3,
-            "date": "15:09:23"
+            "date": "15:09:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 2,
             "lab_work_mark": 3,
-            "date": "15:10:23"
+            "date": "15:10:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 3,
             "lab_work_mark": 3,
-            "date": "15:11:23"
+            "date": "15:11:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 4,
             "lab_work_mark": 3,
-            "date": "15:12:23"
+            "date": "15:12:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 1,
+            "lab_work_mark": 3,
+            "date": "15:09:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 2,
+            "lab_work_mark": 3,
+            "date": "15:10:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 3,
+            "lab_work_mark": 3,
+            "date": "15:11:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 4,
+            "lab_work_mark": 3,
+            "date": "15:12:2023"
         }
     ]
 },
@@ -437,28 +749,52 @@
     "subgroup": 1,
     "lab_works_sessions": [
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 1,
             "lab_work_mark": 2,
-            "date": "15:09:23"
+            "date": "15:09:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 2,
             "lab_work_mark": 4,
-            "date": "15:10:23"
+            "date": "15:10:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 3,
             "lab_work_mark": 4,
-            "date": "15:11:23"
+            "date": "15:11:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 4,
             "lab_work_mark": 4,
-            "date": "15:12:23"
+            "date": "15:12:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 1,
+            "lab_work_mark": 2,
+            "date": "15:09:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 2,
+            "lab_work_mark": 4,
+            "date": "15:10:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 3,
+            "lab_work_mark": 4,
+            "date": "15:11:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 4,
+            "lab_work_mark": 4,
+            "date": "15:12:2023"
         }
     ]
 },
@@ -470,28 +806,52 @@
     "subgroup": 2,
     "lab_works_sessions": [
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 1,
             "lab_work_mark": 4,
-            "date": "15:09:23"
+            "date": "15:09:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 2,
             "lab_work_mark": 2,
-            "date": "15:10:23"
+            "date": "15:10:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 3,
             "lab_work_mark": 2,
-            "date": "15:11:23"
+            "date": "15:11:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 4,
             "lab_work_mark": 3,
-            "date": "15:12:23"
+            "date": "15:12:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 1,
+            "lab_work_mark": 4,
+            "date": "15:09:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 2,
+            "lab_work_mark": 2,
+            "date": "15:10:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 3,
+            "lab_work_mark": 2,
+            "date": "15:11:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 4,
+            "lab_work_mark": 3,
+            "date": "15:12:2023"
         }
     ]
 },
@@ -503,28 +863,52 @@
     "subgroup": 2,
     "lab_works_sessions": [
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 1,
             "lab_work_mark": 4,
-            "date": "15:09:23"
+            "date": "15:09:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 2,
             "lab_work_mark": 4,
-            "date": "15:10:23"
+            "date": "15:10:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 3,
             "lab_work_mark": 3,
-            "date": "15:11:23"
+            "date": "15:11:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 4,
             "lab_work_mark": 2,
-            "date": "15:12:23"
+            "date": "15:12:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 1,
+            "lab_work_mark": 4,
+            "date": "15:09:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 2,
+            "lab_work_mark": 4,
+            "date": "15:10:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 3,
+            "lab_work_mark": 3,
+            "date": "15:11:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 4,
+            "lab_work_mark": 2,
+            "date": "15:12:2023"
         }
     ]
 },
@@ -536,28 +920,52 @@
     "subgroup": 2,
     "lab_works_sessions": [
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 1,
             "lab_work_mark": 3,
-            "date": "15:09:23"
+            "date": "15:09:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 2,
             "lab_work_mark": 3,
-            "date": "15:10:23"
+            "date": "15:10:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 3,
             "lab_work_mark": 2,
-            "date": "15:11:23"
+            "date": "15:11:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 4,
             "lab_work_mark": 3,
-            "date": "15:12:23"
+            "date": "15:12:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 1,
+            "lab_work_mark": 3,
+            "date": "15:09:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 2,
+            "lab_work_mark": 3,
+            "date": "15:10:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 3,
+            "lab_work_mark": 2,
+            "date": "15:11:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 4,
+            "lab_work_mark": 3,
+            "date": "15:12:2023"
         }
     ]
 },
@@ -569,28 +977,52 @@
     "subgroup": 2,
     "lab_works_sessions": [
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 1,
             "lab_work_mark": 2,
-            "date": "15:09:23"
+            "date": "15:09:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 2,
             "lab_work_mark": 2,
-            "date": "15:10:23"
+            "date": "15:10:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 3,
             "lab_work_mark": 2,
-            "date": "15:11:23"
+            "date": "15:11:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 4,
             "lab_work_mark": 4,
-            "date": "15:12:23"
+            "date": "15:12:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 1,
+            "lab_work_mark": 2,
+            "date": "15:09:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 2,
+            "lab_work_mark": 2,
+            "date": "15:10:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 3,
+            "lab_work_mark": 2,
+            "date": "15:11:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 4,
+            "lab_work_mark": 4,
+            "date": "15:12:2023"
         }
     ]
 },
@@ -602,28 +1034,52 @@
     "subgroup": 2,
     "lab_works_sessions": [
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 1,
             "lab_work_mark": 3,
-            "date": "15:09:23"
+            "date": "15:09:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 2,
             "lab_work_mark": 3,
-            "date": "15:10:23"
+            "date": "15:10:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 3,
             "lab_work_mark": 4,
-            "date": "15:11:23"
+            "date": "15:11:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 4,
             "lab_work_mark": 4,
-            "date": "15:12:23"
+            "date": "15:12:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 1,
+            "lab_work_mark": 3,
+            "date": "15:09:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 2,
+            "lab_work_mark": 3,
+            "date": "15:10:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 3,
+            "lab_work_mark": 4,
+            "date": "15:11:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 4,
+            "lab_work_mark": 4,
+            "date": "15:12:2023"
         }
     ]
 },
@@ -635,28 +1091,52 @@
     "subgroup": 2,
     "lab_works_sessions": [
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 1,
             "lab_work_mark": 3,
-            "date": "15:09:23"
+            "date": "15:09:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 2,
             "lab_work_mark": 2,
-            "date": "15:10:23"
+            "date": "15:10:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 3,
             "lab_work_mark": 3,
-            "date": "15:11:23"
+            "date": "15:11:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 4,
             "lab_work_mark": 2,
-            "date": "15:12:23"
+            "date": "15:12:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 1,
+            "lab_work_mark": 3,
+            "date": "15:09:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 2,
+            "lab_work_mark": 2,
+            "date": "15:10:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 3,
+            "lab_work_mark": 3,
+            "date": "15:11:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 4,
+            "lab_work_mark": 2,
+            "date": "15:12:2023"
         }
     ]
 },
@@ -668,28 +1148,52 @@
     "subgroup": 2,
     "lab_works_sessions": [
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 1,
             "lab_work_mark": 4,
-            "date": "15:09:23"
+            "date": "15:09:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 2,
             "lab_work_mark": 3,
-            "date": "15:10:23"
+            "date": "15:10:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 3,
             "lab_work_mark": 4,
-            "date": "15:11:23"
+            "date": "15:11:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 4,
             "lab_work_mark": 3,
-            "date": "15:12:23"
+            "date": "15:12:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 1,
+            "lab_work_mark": 4,
+            "date": "15:09:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 2,
+            "lab_work_mark": 3,
+            "date": "15:10:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 3,
+            "lab_work_mark": 4,
+            "date": "15:11:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 4,
+            "lab_work_mark": 3,
+            "date": "15:12:2023"
         }
     ]
 },
@@ -701,28 +1205,52 @@
     "subgroup": 2,
     "lab_works_sessions": [
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 1,
             "lab_work_mark": 4,
-            "date": "15:09:23"
+            "date": "15:09:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 2,
             "lab_work_mark": 3,
-            "date": "15:10:23"
+            "date": "15:10:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 3,
             "lab_work_mark": 2,
-            "date": "15:11:23"
+            "date": "15:11:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 4,
             "lab_work_mark": 4,
-            "date": "15:12:23"
+            "date": "15:12:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 1,
+            "lab_work_mark": 4,
+            "date": "15:09:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 2,
+            "lab_work_mark": 3,
+            "date": "15:10:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 3,
+            "lab_work_mark": 2,
+            "date": "15:11:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 4,
+            "lab_work_mark": 4,
+            "date": "15:12:2023"
         }
     ]
 },
@@ -734,28 +1262,52 @@
     "subgroup": 2,
     "lab_works_sessions": [
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 1,
             "lab_work_mark": 4,
-            "date": "15:09:23"
+            "date": "15:09:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 2,
             "lab_work_mark": 2,
-            "date": "15:10:23"
+            "date": "15:10:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 3,
             "lab_work_mark": 3,
-            "date": "15:11:23"
+            "date": "15:11:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 4,
             "lab_work_mark": 4,
-            "date": "15:12:23"
+            "date": "15:12:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 1,
+            "lab_work_mark": 4,
+            "date": "15:09:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 2,
+            "lab_work_mark": 2,
+            "date": "15:10:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 3,
+            "lab_work_mark": 3,
+            "date": "15:11:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 4,
+            "lab_work_mark": 4,
+            "date": "15:12:2023"
         }
     ]
 },
@@ -767,28 +1319,52 @@
     "subgroup": 2,
     "lab_works_sessions": [
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 1,
             "lab_work_mark": 3,
-            "date": "15:09:23"
+            "date": "15:09:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 2,
             "lab_work_mark": 4,
-            "date": "15:10:23"
+            "date": "15:10:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 3,
             "lab_work_mark": 2,
-            "date": "15:11:23"
+            "date": "15:11:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 4,
             "lab_work_mark": 4,
-            "date": "15:12:23"
+            "date": "15:12:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 1,
+            "lab_work_mark": 3,
+            "date": "15:09:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 2,
+            "lab_work_mark": 4,
+            "date": "15:10:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 3,
+            "lab_work_mark": 2,
+            "date": "15:11:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 4,
+            "lab_work_mark": 4,
+            "date": "15:12:2023"
         }
     ]
 },
@@ -800,28 +1376,52 @@
     "subgroup": 2,
     "lab_works_sessions": [
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 1,
             "lab_work_mark": 3,
-            "date": "15:09:23"
+            "date": "15:09:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 2,
             "lab_work_mark": 3,
-            "date": "15:10:23"
+            "date": "15:10:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 3,
             "lab_work_mark": 3,
-            "date": "15:11:23"
+            "date": "15:11:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 4,
             "lab_work_mark": 4,
-            "date": "15:12:23"
+            "date": "15:12:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 1,
+            "lab_work_mark": 3,
+            "date": "15:09:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 2,
+            "lab_work_mark": 3,
+            "date": "15:10:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 3,
+            "lab_work_mark": 3,
+            "date": "15:11:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 4,
+            "lab_work_mark": 4,
+            "date": "15:12:2023"
         }
     ]
 },
@@ -833,28 +1433,52 @@
     "subgroup": 2,
     "lab_works_sessions": [
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 1,
             "lab_work_mark": 2,
-            "date": "15:09:23"
+            "date": "15:09:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 2,
             "lab_work_mark": 3,
-            "date": "15:10:23"
+            "date": "15:10:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 3,
             "lab_work_mark": 2,
-            "date": "15:11:23"
+            "date": "15:11:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 4,
             "lab_work_mark": 2,
-            "date": "15:12:23"
+            "date": "15:12:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 1,
+            "lab_work_mark": 2,
+            "date": "15:09:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 2,
+            "lab_work_mark": 3,
+            "date": "15:10:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 3,
+            "lab_work_mark": 2,
+            "date": "15:11:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 4,
+            "lab_work_mark": 2,
+            "date": "15:12:2023"
         }
     ]
 },
@@ -866,28 +1490,52 @@
     "subgroup": 2,
     "lab_works_sessions": [
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 1,
             "lab_work_mark": 2,
-            "date": "15:09:23"
+            "date": "15:09:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 2,
             "lab_work_mark": 4,
-            "date": "15:10:23"
+            "date": "15:10:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 3,
             "lab_work_mark": 4,
-            "date": "15:11:23"
+            "date": "15:11:2023"
         },
         {
-            "presence": 1,
+            "presence": true,
             "lab_work_n": 4,
             "lab_work_mark": 4,
-            "date": "15:12:23"
+            "date": "15:12:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 1,
+            "lab_work_mark": 2,
+            "date": "15:09:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 2,
+            "lab_work_mark": 4,
+            "date": "15:10:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 3,
+            "lab_work_mark": 4,
+            "date": "15:11:2023"
+        },
+        {
+            "presence": true,
+            "lab_work_n": 4,
+            "lab_work_mark": 4,
+            "date": "15:12:2023"
         }
     ]
 }]
