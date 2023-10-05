@@ -295,7 +295,22 @@ class Regression:
         :param order: порядок полинома
         :return: набор коэффициентов bi полинома y = Σx^i*bi
         """
-        return np.array((0.0,))
+        n = len(x)
+        X = np.zeros((n, order + 1))
+        Y = np.zeros(n)
+
+        for i in range(n):
+            for j in range(order + 1):
+                X[i][j] = x[i] ** j
+            Y[i] = y[i]
+
+        A = np.dot(X.T, X)
+        B = np.dot(X.T, Y)
+
+        b = np.linalg.solve(A, B)
+
+        return b
+        # return np.array((0.0,))
 
     @staticmethod
     def polynom(x: np.ndarray, b: np.ndarray) -> np.ndarray:
@@ -304,7 +319,15 @@ class Regression:
         :param b: массив коэффициентов полинома\n
         :returns: возвращает полином yi = Σxi^j*bj\n
         """
-        return np.array((0.0,))
+        n = len(x)
+        order = len(b) - 1
+        y = np.zeros(n)
+
+        for i in range(n):
+            for j in range(order + 1):
+                y[i] += x[i] ** j * b[j]
+
+        return y
 
     @staticmethod
     def quadratic_regression_2d(x: np.ndarray, y: np.ndarray, z: np.ndarray) -> np.ndarray:
@@ -398,9 +421,17 @@ class Regression:
         :return:
         """
         print('\npoly regression test:')
-        # x, y = Regression.test_data_along_line()
-        # coefficients = Regression.poly_regression(x, y)
-        # y_ = Regression.polynom(x, coefficients)
+        x, y = Regression.test_data_along_line()
+        coefficients = Regression.poly_regression(x, y)
+        y_ = Regression.polynom(x, coefficients)
+
+        k, b = Regression.linear_regression(x, y)
+        plt.scatter(x, y, color='blue', label='Data Points')
+        plt.plot(x, y_, color='red', label='PolyRegression Line')
+        plt.xlabel('x')
+        plt.ylabel('y')
+        plt.legend()
+        plt.show()
 
     @staticmethod
     def n_linear_reg_example():
@@ -422,6 +453,6 @@ if __name__ == "__main__":
     Regression.distance_field_example()
     Regression.linear_reg_example()
     Regression.bi_linear_reg_example()
-    Regression.n_linear_reg_example()
+    # Regression.n_linear_reg_example()
     Regression.poly_reg_example()
     Regression.quadratic_reg_example()
