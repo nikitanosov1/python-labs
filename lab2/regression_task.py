@@ -33,13 +33,15 @@ class Regression:
         """
         x_step = arg_range / (n_points - 1)
         return np.array([i * x_step for i in range(n_points)]),\
-               np.array([i * x_step * k + b + Regression.rand_in_range(rand_range) for i in range(n_points)])
+            np.array([i * x_step * k + b + Regression.rand_in_range(rand_range)
+                     for i in range(n_points)])
 
     @staticmethod
     def second_order_surface_2d(surf_params:
-                                Tuple[float, float, float, float, float, float] = (1.0, -2.0, 3.0, 1.0, 2.0, -3.0),
+                                Tuple[float, float, float, float, float, float] = (
+                                    1.0, -2.0, 3.0, 1.0, 2.0, -3.0),
                                 args_range: float = 1.0, rand_range: float = .1, n_points: int = 1000) -> \
-                                Tuple[np.ndarray, np.ndarray, np.ndarray]:
+            Tuple[np.ndarray, np.ndarray, np.ndarray]:
         """
         Генерирует набор тестовых данных около поверхности второго порядка.
         Уравнение поверхности:
@@ -51,11 +53,14 @@ class Regression:
         :param n_points:
         :return:
         """
-        x = np.array([Regression.rand_in_range(args_range) for _ in range(n_points)])
-        y = np.array([Regression.rand_in_range(args_range) for _ in range(n_points)])
-        dz = np.array([surf_params[5] + Regression.rand_in_range(rand_range) for _ in range(n_points)])
+        x = np.array([Regression.rand_in_range(args_range)
+                     for _ in range(n_points)])
+        y = np.array([Regression.rand_in_range(args_range)
+                     for _ in range(n_points)])
+        dz = np.array([surf_params[5] + Regression.rand_in_range(rand_range)
+                      for _ in range(n_points)])
         return x, y, surf_params[0] * x * x + surf_params[1] * y * x + surf_params[2] * y * y + \
-               surf_params[3] * x + surf_params[4] * y + dz
+            surf_params[3] * x + surf_params[4] * y + dz
 
     @staticmethod
     def test_data_2d(kx: float = -2.0, ky: float = 2.0, b: float = 12.0, args_range: float = 1.0,
@@ -70,9 +75,12 @@ class Regression:
         :param n_points: количество точек
         :returns: кортеж значенией по x, y и z
         """
-        x = np.array([Regression.rand_in_range(args_range) for _ in range(n_points)])
-        y = np.array([Regression.rand_in_range(args_range) for _ in range(n_points)])
-        dz = np.array([b + Regression.rand_in_range(rand_range) for _ in range(n_points)])
+        x = np.array([Regression.rand_in_range(args_range)
+                     for _ in range(n_points)])
+        y = np.array([Regression.rand_in_range(args_range)
+                     for _ in range(n_points)])
+        dz = np.array([b + Regression.rand_in_range(rand_range)
+                      for _ in range(n_points)])
         return x, y, x * kx + y * ky + dz
 
     @staticmethod
@@ -89,9 +97,11 @@ class Regression:
         n_dims = surf_settings.size - 1
         data = np.zeros((n_points, n_dims + 1,), dtype=float)
         for i in range(n_dims):
-            data[:, i] = np.array([Regression.rand_in_range(args_range) for _ in range(n_points)])
+            data[:, i] = np.array(
+                [Regression.rand_in_range(args_range) for _ in range(n_points)])
             data[:, n_dims] += surf_settings[i] * data[:, i]
-        dz = np.array([surf_settings[n_dims] + Regression.rand_in_range(rand_range) for _ in range(n_points)])
+        dz = np.array([surf_settings[n_dims] + Regression.rand_in_range(rand_range)
+                      for _ in range(n_points)])
         data[:, n_dims] += dz
         return data
 
@@ -159,7 +169,20 @@ class Regression:
         :param y: массив значений по y
         :returns: возвращает пару (k, b), которая является решением задачи (Σ(yi -(k * xi + b))^2)->min
         """
-        return 0.0, 0.0
+        n = len(x)
+        sum_xi_multiply_yi = 0
+        sum_xi = 0
+        sum_yi = 0
+        sum_squared_xi = 0
+        for i in range(n):
+            sum_xi_multiply_yi += x[i] * y[i]
+            sum_xi += x[i]
+            sum_yi += y[i]
+            sum_squared_xi += x[i] * x[i]
+        k = (sum_xi_multiply_yi - sum_xi * sum_yi / n) / \
+            (sum_squared_xi - (sum_xi) ** 2 / n)
+        b = (sum_yi - k * sum_xi) / n
+        return k, b
 
     @staticmethod
     def bi_linear_regression(x: np.ndarray, y: np.ndarray, z: np.ndarray) -> Tuple[float, float, float]:
@@ -217,7 +240,25 @@ class Regression:
         :param z: массив значений по z
         :returns: возвращает тройку (kx, ky, b), которая является решением задачи (Σ(zi - (yi * ky + xi * kx + b))^2)->min
         """
-        return 0.0, 0.0, 0.0
+        n = len(x)
+        sum_x = np.sum(x)
+        sum_y = np.sum(y)
+        sum_z = np.sum(z)
+        sum_x2 = np.sum(x**2)
+        sum_y2 = np.sum(y**2)
+        sum_xy = np.sum(x*y)
+        sum_xz = np.sum(x*z)
+        sum_yz = np.sum(y*z)
+
+        A = np.array([[sum_x2, sum_xy, sum_x],
+                      [sum_xy, sum_y2, sum_y],
+                      [sum_x, sum_y, n]])
+
+        B = np.array([sum_xz, sum_yz, sum_z])
+
+        kx, ky, b = np.linalg.solve(A, B)
+
+        return kx, ky, b
 
     @staticmethod
     def n_linear_regression(data_rows: np.ndarray) -> np.ndarray:
@@ -283,8 +324,8 @@ class Regression:
         x, y = Regression.test_data_along_line()
         k_, b_ = Regression.linear_regression(x, y)
         print(f"y(x) = {k_:1.5} * x + {b_:1.5}\n")
-        k = np.linspace(-2.0, 2.0, 128, dtype=float)
-        b = np.linspace(-2.0, 2.0, 128, dtype=float)
+        k = np.linspace(k_ - 2.0, k_ + 2.0, 128, dtype=float)
+        b = np.linspace(b_ - 2.0, b_ + 2.0, 128, dtype=float)
         z = Regression.distance_field(x, y, k, b)
         plt.imshow(z, extent=[k.min(), k.max(), b.min(), b.max()])
         plt.plot(k_, b_, 'r*')
@@ -304,8 +345,16 @@ class Regression:
         :return:
         """
         print("linear reg test:")
-        # x, y = Regression.test_data_along_line()
-        # k, b = Regression.linear_regression(x, y)
+        x, y = Regression.test_data_along_line()
+        print(x, y)
+        k, b = Regression.linear_regression(x, y)
+
+        plt.scatter(x, y, color='blue', label='Data Points')
+        plt.plot(x, k * x + b, color='red', label='Regression Line')
+        plt.xlabel('x')
+        plt.ylabel('y')
+        plt.legend()
+        plt.show()
 
     @staticmethod
     def bi_linear_reg_example():
@@ -318,8 +367,25 @@ class Regression:
         :return:
         """
         from matplotlib import cm
-        # x, y, z = Regression.test_data_2d()
-        # kx, ky, b = Regression.bi_linear_regression(x, y, z)
+        x, y, z = Regression.test_data_2d()
+        kx, ky, b = Regression.bi_linear_regression(x, y, z)
+        # Create a meshgrid of x and y values
+        x_grid, y_grid = np.meshgrid(x, y)
+        # Compute the predicted z values using the regression equation
+        z_pred = kx * x_grid + ky * y_grid + b
+        # Create a 3D plot
+        fig = plt.figure()
+        ax = fig.add_subplot(111, projection='3d')
+        # Plot the data points
+        ax.scatter(x, y, z, c='r', marker='o')
+        # Plot the regression plane
+        ax.plot_surface(x_grid, y_grid, z_pred, cmap=cm.coolwarm, alpha=0.5)
+        # Set labels for x, y, and z axes
+        ax.set_xlabel('x')
+        ax.set_ylabel('y')
+        ax.set_zlabel('z')
+        # Show the plot
+        plt.show()
 
     @staticmethod
     def poly_reg_example():
@@ -359,4 +425,3 @@ if __name__ == "__main__":
     Regression.n_linear_reg_example()
     Regression.poly_reg_example()
     Regression.quadratic_reg_example()
-
