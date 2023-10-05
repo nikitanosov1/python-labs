@@ -49,15 +49,15 @@ class Student:
 
     def _build_student(self, name, surname, group, subgroup, unique_id):
         if not isinstance(unique_id, int) or unique_id < 0:
-            return False, f'id = {unique_id} :: bad_id'
+            return False, f'id = {unique_id} не прошел валидацию'
         if not isinstance(name, str) or len(name) == 0:
-            return False, f'id = {unique_id} :: bad_name'
+            return False, f'id = {unique_id} не прошел валидацию'
         if not isinstance(surname, str) or len(surname) == 0:
-            return False, f'id = {unique_id} :: bad_surname'
+            return False, f'id = {unique_id} не прошел валидацию'
         if not isinstance(group, int) or group <= 0:
-            return False, f'id = {unique_id} :: bad_group'
+            return False, f'id = {unique_id} не прошел валидацию'
         if not isinstance(subgroup, int) or subgroup <= 0:
-            return False, f'id = {unique_id} :: bad_subgroup'
+            return False, f'id = {unique_id} не прошел валидацию'
         self._name = name
         self._unique_id = unique_id
         self._surname = surname

@@ -332,25 +332,6 @@ class Regression:
     @staticmethod
     def quadratic_regression_2d(x: np.ndarray, y: np.ndarray, z: np.ndarray) -> np.ndarray:
         n = len(x)
-        X = np.zeros((n, 9))
-        Z = np.zeros(n)
-
-        for i in range(n):
-            X[i][0] = x[i] ** 2
-            X[i][1] = y[i] ** 2
-            X[i][2] = x[i]
-            X[i][3] = y[i]
-            X[i][4] = y[i] ** 2
-            X[i][5] = x[i]
-            X[i][6] = y[i]
-            X[i][7] = x[i] * y[i]
-            X[i][8] = 1
-            Z[i] = z[i]
-
-        pseudo_inverse = np.linalg.pinv(X)
-        coefficients = np.dot(pseudo_inverse, Z)
-
-        return coefficients
 
     @staticmethod
     def distance_field_example():
@@ -463,16 +444,17 @@ class Regression:
         print('2d quadratic regression test:')
         x, y, z = Regression.second_order_surface_2d()
         coeffs = Regression.quadratic_regression_2d(x, y, z)
-        print("coeffs = ", coeffs)
-        y_ = Regression.polynom(x, coeffs)
-        print(
-            f"z(x, y) = {coeffs[0]:1.3} * x^2 + {coeffs[1]:1.3} * x * y + {coeffs[2]:1.3} * y^2 + {coeffs[3]:1.3} * x + {coeffs[4]:1.3} * y + {coeffs[5]:1.3}")
+        # print("coeffs = ", coeffs)
+        # y_ = Regression.polynom(x, coeffs)
+
+        # print(
+        #     f"z(x, y) = {coeffs[0]:1.3} * x^2 + {coeffs[1]:1.3} * x * y + {coeffs[2]:1.3} * y^2 + {coeffs[3]:1.3} * x + {coeffs[4]:1.3} * y + {coeffs[5]:1.3}")
 
 
 if __name__ == "__main__":
-    # Regression.distance_field_example()
-    # Regression.linear_reg_example()
-    # Regression.bi_linear_reg_example()
+    Regression.distance_field_example()
+    Regression.linear_reg_example()
+    Regression.bi_linear_reg_example()
     Regression.n_linear_reg_example()
-    # Regression.poly_reg_example()
-    # Regression.quadratic_reg_example()
+    Regression.poly_reg_example()
+    Regression.quadratic_reg_example()
