@@ -294,132 +294,95 @@ def draw_logistic_data(features: np.ndarray, groups: np.ndarray, theta: np.ndarr
     plt.plot(x, y, 'k')
     plt.show()
 
+
 class LogisticRegression:
-    def __init__(self, learning_rate=0.001, n_iters=1000):
-        self.lr = learning_rate
-        self.n_iters = n_iters
-        self.weights = None
-        self.bias = None
+    def __init__(self, learning_rate: float = 1.0,
+                 max_iters: int = 1000, accuracy: float = 1e-2):
+        # максимальное количество шагов градиентным спуском
+        self._max_train_iters: int = 0
+        # длина шага вдоль направления градиента
+        self._learning_rate: float = 0
+        # точность к которой мы стремимся
+        self._learning_accuracy: float = 0
+        # колическто признаков одной группы
+        self._group_features_count = 0
+        # параметры тетта (подробное описание в pdf файле)
+        self._thetas: Union[np.ndarray, None] = None
+        # текущее знаение функции потерь
+        self._losses: float = 0.0
 
-    def train(self, X, y):
-        n_samples, n_features = X.shape
+        self.max_train_iters = max_iters
+        self.learning_rate = learning_rate
+        self.learning_accuracy = accuracy
 
-        # init parameters
-        np.random.seed(42)
-        self.weights = np.random.rand(n_features)
-        self.bias = 0
+    def __str__(self):
+        """
+        JSON совместимая строка, состоящая из:
+        group_features_count - целое число;,
+        max_train_iters - целое число;
+        learning_rate - число с плавающей точкой;
+        learning_accuracy - число с плавающей точкой;
+        thetas - массив значений с плавающей точкой;
+        losses - число с плавающей точкой.
+        :return:
+        """
+        return ""
 
-        # gradient descent
-        for _ in range(self.n_iters):
-            # approximate y with linear combination of weights and x, plus bias
-            y_pred = np.dot(X, self.weights) + self.bias
-            # apply sigmoid function
-            logits = self._sigmoid(y_pred)
+    @property
+    def group_features_count(self) -> int:
+        return 0
 
-            # compute gradients
-            dw = np.dot(X.T, (logits - y))
-            db = np.sum(logits - y)
-            # update parameters
-            self.weights -= self.lr * dw
-            self.bias -= self.lr * db
+    @property
+    def max_train_iters(self) -> int:
+        return 0
 
-    def predict(self, X):
-        y_pred = np.dot(X, self.weights) + self.bias
-        logits = self._sigmoid(y_pred)
-        y_predicted_cls = [1 if i > 0.5 else 0 for i in logits]
-        return np.array(y_predicted_cls)
+    @max_train_iters.setter
+    def max_train_iters(self, value: int) -> None:
+        # проверка типа
+        # проверка диапаона от до, но не меньше, например, 100
+        ...
 
-    def _sigmoid(self, x):
-        return 1 / (1 + np.exp(-x))
-    
-# class LogisticRegression:
-#     def __init__(self, learning_rate: float = 1.0,
-#                  max_iters: int = 1000, accuracy: float = 1e-2):
-#         # максимальное количество шагов градиентным спуском
-#         self._max_train_iters: int = 0
-#         # длина шага вдоль направления градиента
-#         self._learning_rate: float = 0
-#         # точность к которой мы стремимся
-#         self._learning_accuracy: float = 0
-#         # колическто признаков одной группы
-#         self._group_features_count = 0
-#         # параметры тетта (подробное описание в pdf файле)
-#         self._thetas: Union[np.ndarray, None] = None
-#         # текущее знаение функции потерь
-#         self._losses: float = 0.0
+    @property
+    def learning_rate(self) -> float:
+        return self.__learning_rate
 
-#         self.max_train_iters = max_iters
-#         self.learning_rate = learning_rate
-#         self.learning_accuracy = accuracy
+    @learning_rate.setter
+    def learning_rate(self, value: float) -> None:
+        # проверка типа
+        # проверка диапаона от до, но не меньше, например, 0.01 и не больше 1.0
+        ...
 
-#     def __str__(self):
-#         """
-#         JSON совместимая строка, состоящая из:
-#         group_features_count - целое число;,
-#         max_train_iters - целое число;
-#         learning_rate - число с плавающей точкой;
-#         learning_accuracy - число с плавающей точкой;
-#         thetas - массив значений с плавающей точкой;
-#         losses - число с плавающей точкой.
-#         :return:
-#         """
-#         return ""
+    @property
+    def learning_accuracy(self) -> float:
+        return 0.0
 
-#     @property
-#     def group_features_count(self) -> int:
-#         return 0
+    @learning_accuracy.setter
+    def learning_accuracy(self, value: float) -> None:
+        # проверка типа
+        # проверка диапаона от до, но не меньше, например, 0.01 и не больше 1.0
+        ...
 
-#     @property
-#     def max_train_iters(self) -> int:
-#         return 0
+    @property
+    def thetas(self) -> np.ndarray:
+        return np.array([])
 
-#     @max_train_iters.setter
-#     def max_train_iters(self, value: int) -> None:
-#         # проверка типа
-#         # проверка диапаона от до, но не меньше, например, 100
-#         ...
+    @property
+    def losses(self) -> float:
+        return 0.0
 
-#     @property
-#     def learning_rate(self) -> float:
-#         return self.__learning_rate
+    def predict(self, features: np.ndarray) -> np.ndarray:
+        # проверка размерности -  количество принаков группы == количество элементов в толбце
+        return np.array([])
 
-#     @learning_rate.setter
-#     def learning_rate(self, value: float) -> None:
-#         # проверка типа
-#         # проверка диапаона от до, но не меньше, например, 0.01 и не больше 1.0
-#         ...
-
-#     @property
-#     def learning_accuracy(self) -> float:
-#         return 0.0
-
-#     @learning_accuracy.setter
-#     def learning_accuracy(self, value: float) -> None:
-#         # проверка типа
-#         # проверка диапаона от до, но не меньше, например, 0.01 и не больше 1.0
-#         ...
-
-#     @property
-#     def thetas(self) -> np.ndarray:
-#         return np.array([])
-
-#     @property
-#     def losses(self) -> float:
-#         return 0.0
-
-#     def predict(self, features: np.ndarray) -> np.ndarray:
-#         # проверка размерности -  количество принаков группы == количество элементов в толбце
-#         return np.array([])
-
-#     def train(self, features: np.ndarray, groups: np.ndarray) -> None:
-#         """
-#         :param features: - признаки групп, записанные в виде столбцов
-#         :param groups: - вектор столбец принадлежности групп (0-первая группа, 1-вторая)
-#         :return:
-#         """
-#         # проверка размерности -  количество принаков группы == количество элементов в толбце
-#         # реализация градиентного спуска для обучения логистической регрессии.
-#         # формула thetas(i) = thetas(i - 1) - learning_rate * (X^T * sigmoid(X *  thetas(i - 1)) - groups)
+    def train(self, features: np.ndarray, groups: np.ndarray) -> None:
+        """
+        :param features: - признаки групп, записанные в виде столбцов
+        :param groups: - вектор столбец принадлежности групп (0-первая группа, 1-вторая)
+        :return:
+        """
+        # проверка размерности -  количество принаков группы == количество элементов в толбце
+        # реализация градиентного спуска для обучения логистической регрессии.
+        # формула thetas(i) = thetas(i - 1) - learning_rate * (X^T * sigmoid(X *  thetas(i - 1)) - groups)
 
 
 def lin_reg_test():
@@ -454,5 +417,5 @@ def non_lin_reg_test():
 
 
 if __name__ == "__main__":
-    lin_reg_test()
+    # lin_reg_test()
     # non_lin_reg_test()
