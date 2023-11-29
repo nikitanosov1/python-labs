@@ -56,7 +56,7 @@ class KMeans:
         """
         Просто геттер для "_distance_threshold".
         """
-        return self._distance_threshold
+        return 0.0
 
     @distance_threshold.setter
     def distance_threshold(self, value: float) -> None:
@@ -66,15 +66,13 @@ class KMeans:
         2. Проверку на не отрицательность.
         """
         ...
-        assert isinstance(value, float)
-        self._distance_threshold = value
 
     @property
     def n_clusters(self) -> int:
         """
         Геттер для числа кластеров, которые ожидаем обнаружить.
         """
-        return self._n_clusters
+        return 0
 
     @n_clusters.setter
     def n_clusters(self, value: int) -> None:
@@ -83,15 +81,14 @@ class KMeans:
         1. Должен осуществлять проверку типа.
         2. Количество кластеров не менее двух.
         """
-        assert isinstance(value, int)
-        self._n_clusters = value
+        ...
 
     @property
     def n_samples(self) -> int:
         """
         Количество записей в массиве данных. Например, количество {x, y} координат на плоскости.
         """
-        return 0 if self._data is None else self._data.shape[0]
+        return 0
 
     @property
     def n_features(self) -> int:
@@ -99,7 +96,7 @@ class KMeans:
         Количество особенностей каждой записи в массив денных. Например,
         две координаты "x" и "y" в случе точек на плоскости.
         """
-        return 0 if self._data is None else self._data.shape[1]
+        return 0
 
     @property
     def clusters(self) -> List[np.ndarray]:
@@ -107,13 +104,7 @@ class KMeans:
         Создаёт список из np.ndarray. Каждый такой массив - это все точки определённого кластера.
         Индексы точек соответствующих кластеру хранятся в "_clusters_points_indices"
         """
-        clusters = []
-        for ids in self._clusters_points_indices:
-            cluster_points = np.zeros((len(ids), self.n_features), dtype=float)
-            for index, cluster_point_index in enumerate(ids):
-                cluster_points[index, :] = self._data[cluster_point_index, :]
-            clusters.append(cluster_points)
-        return clusters
+        return []
 
     def _clear_current_clusters(self) -> None:
         """
@@ -121,11 +112,7 @@ class KMeans:
         Очищает список индексов строк из "_data", которые соответствуют определённому кластеру.
         Реализует "ленивую" инициализацию полей "_clusters_points_indices" и "_clusters_centers".
         """
-        if self._clusters_points_indices is None:
-            self._clusters_points_indices = []
-            self._clusters_centers = []
-        self._clusters_points_indices.clear()
-        self._clusters_centers.clear()
+        ...
 
     def _create_start_clusters_centers(self) -> None:
         """
@@ -135,20 +122,12 @@ class KMeans:
         """
         Очищаем информацию о центрах кластеров и о индексах точек, соответствующих кластеру. 
         """
-
         self._clear_current_clusters()
         """
         Далее есть смысл использовать что-то вроде "set", что бы индексы случайно выбранных начальных
         центров кластеров не повторялись.
         """
         clusters_ids = set()  # Проверка, что мы не воткнём две одинаковые точки, как центр кластера.
-        while len(self._clusters_points_indices) != self._n_clusters:
-            cluster_center_index = random.randint(0, self.n_samples - 1)
-            if cluster_center_index in clusters_ids:
-                continue
-            clusters_ids.update({cluster_center_index})
-            self._clusters_centers.append(self._data[cluster_center_index, :])
-            self._clusters_points_indices.append([])
         ...
 
     def _get_closest_cluster_center(self, sample: np.ndarray) -> int:
@@ -156,15 +135,7 @@ class KMeans:
         Определяет ближайший центр кластера для точки из переданного набора данных.
         Hint: для ускорения кода используйте min с генератором.
         """
-        min_index = -1
-        min_dist = 1e32
-        for cluster_center_index, cluster_center in enumerate(self._clusters_centers):
-            dist = distance(cluster_center, sample)
-            if dist > min_dist:
-                continue
-            min_index = cluster_center_index
-            min_dist = dist
-        return min_index
+        return -1
 
     def _clusterize_step(self) -> List[np.ndarray]:
         """
@@ -178,19 +149,7 @@ class KMeans:
         Расчёт центроидов:
         Hint: используйте sum с генератором
         """
-        for cluster in self._clusters_points_indices:
-            cluster.clear()
-        for sample_index, sample in enumerate(self._data):
-            cluster_index = self._get_closest_cluster_center(sample)
-            self._clusters_points_indices[cluster_index].append(sample_index)
-        centroids = []
-        for cluster_id, cluster_sample_indices in enumerate(self._clusters_points_indices):
-            if cluster_sample_indices == 0:
-                continue
-            centroids.append(sum(self._data[sample_index, :] for sample_index in cluster_sample_indices) /
-                             len(cluster_sample_indices))
-        #print(centroids)
-        return centroids
+        return []
 
     def fit(self, data: np.ndarray, target_clusters: int = None) -> None:
         """
@@ -204,15 +163,7 @@ class KMeans:
         4. Цикл уточнения положения центроидов. Выполнять пока расстояние между текущим центроидом
            кластера и предыдущим больше, чем "distance_threshold"
         """
-        self._data = data
-        self._create_start_clusters_centers()
-        prev_centroids = self._clusters_centers
-        while True:
-            curr_centroids = self._clusterize_step()
-            if all(distance(left, right) < self._distance_threshold for left, right in
-                   zip(prev_centroids, curr_centroids)):
-                break
-            prev_centroids, self._clusters_centers = self._clusters_centers, curr_centroids
+        ...
 
     def show(self):
         """

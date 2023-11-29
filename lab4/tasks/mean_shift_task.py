@@ -1,5 +1,3 @@
-import time
-
 from clustering_utils import gaussian_cluster, draw_clusters, distance, gauss_core
 from typing import Union, List, Tuple
 import numpy as np
@@ -54,7 +52,7 @@ class MShift:
         """
         Просто геттер для ширины ядра функции усреднения ("_window_size").
         """
-        return self._window_size
+        return 0.0
 
     @window_size.setter
     def window_size(self, value: float) -> None:
@@ -63,15 +61,14 @@ class MShift:
         1. Должен осуществлять проверку типа.
         2. Проверку на не отрицательность.
         """
-        assert isinstance(value, float)
-        self._window_size = max(0.0, value)
+        ...
 
     @property
     def distance_threshold(self) -> float:
         """
         Просто геттер для "_distance_threshold".
         """
-        return self._distance_threshold
+        return 0.0
 
     @distance_threshold.setter
     def distance_threshold(self, value: float) -> None:
@@ -80,22 +77,21 @@ class MShift:
         1. Должен осуществлять проверку типа.
         2. Проверку на не отрицательность.
         """
-        assert isinstance(value, float)
-        self._distance_threshold = max(0.0, value)
+        ...
 
     @property
     def n_clusters(self) -> int:
         """
         Геттер для числа кластеров, которые обнаружили.
         """
-        return 0 if self._clusters_centers is None else len(self._clusters_centers)
+        return 0
 
     @property
     def n_samples(self) -> int:
         """
         Количество записей в массиве данных. Например, количество {x, y} координат на плоскости.
         """
-        return 0 if self._data is None else self._data.shape[0]
+        return 0
 
     @property
     def n_features(self) -> int:
@@ -103,7 +99,7 @@ class MShift:
         Количество особенностей каждой записи в массив денных. Например,
         две координаты "x" и "y" в случе точек на плоскости.
         """
-        return 0 if self._data is None else self._data.shape[1]
+        return 0
 
     @property
     def clusters(self) -> List[np.ndarray]:
@@ -111,13 +107,7 @@ class MShift:
         Создаёт список из np.ndarray. Каждый такой массив - это все точки определённого кластера.
         Индексы точек соответствующих кластеру хранятся в "_clusters_points_indices"
         """
-        clusters = []
-        for ids in self._clusters_points_indices:
-            cluster_points = np.zeros((len(ids), self.n_features), dtype=float)
-            for index, cluster_point_index in enumerate(ids):
-                cluster_points[index, :] = self._data[cluster_point_index, :]
-            clusters.append(cluster_points)
-        return clusters
+        return []
 
     def _clear_current_clusters(self) -> None:
         """
@@ -125,11 +115,7 @@ class MShift:
         Очищает список индексов строк из "_data", которые соответствуют определённому кластеру.
         Реализует "ленивую" инициализацию полей "_clusters" и "_clusters_centers".
         """
-        if self._clusters_points_indices is None:
-            self._clusters_points_indices = []
-            self._clusters_centers = []
-        self._clusters_points_indices.clear()
-        self._clusters_centers.clear()
+        ...
 
     def _shift_cluster_point(self, point: np.ndarray) -> np.ndarray:
         """
@@ -137,9 +123,19 @@ class MShift:
         с радиусом "window_size" вокруг точки point.
         Возвращает массив равный по размеру "point".
         """
-        dists = np.linalg.norm(self._data - point, axis=1)
-        weights = gauss_core(dists, self._window_size)
-        return np.dot(weights, self._data) / weights.sum()
+        # Пример наивного решения. Нет, использовать его нельзя...
+        # shift = np.zeros_like(point)
+        # scale_factor = 0.0
+        # for sample in self._data:
+        #     # numerator
+        #     dist   = distance(point, sample)
+        #     weight = gauss_core(dist, self.window_size)
+        #     shift += point * weight
+        #     # denominator
+        #     scale_factor += weight
+        # shift /= scale_factor
+        # return shift
+        ...
 
     def _update_clusters_centers(self, sample_index, sample: np.ndarray):
         """
@@ -147,16 +143,7 @@ class MShift:
         Если не находит, то считает, что "sample" - новый центр кластера.
         Если находит, то добавляет к индексам точек кластера "sample_index"
         """
-        if self.n_clusters == 0:
-            self._clusters_centers.append(sample)
-            self._clusters_points_indices.append([sample_index])
-            return
-        min_index, min_dist = self._get_closest_cluster_center(sample)
-        if self.window_size > min_dist:
-            self._clusters_points_indices[min_index].append(sample_index)
-        else:
-            self._clusters_centers.append(sample)
-            self._clusters_points_indices.append([sample_index])
+        ...
 
     def _shift_cluster_points(self) -> None:
         """
@@ -164,35 +151,14 @@ class MShift:
         Т.е. для каждой точки вызывается функция _shift_cluster_point()
         Выполняется до тех пор, пока все точки не будут помечены, как неподвижные.
         """
-        shift_points = np.array(self._data)
-        fixed_count = 0
-        fixed_points = set()
-        while fixed_count != self.n_samples:
-            for ind, point in enumerate(shift_points):
-                if ind in fixed_points:
-                    continue
-                shift_point = self._shift_cluster_point(point)
-                dist = distance(shift_point, point)
-                shift_points[ind] = shift_point
-                if dist < self.distance_threshold:
-                    fixed_points.add(ind)
-                    fixed_count += 1
-                    self._update_clusters_centers(ind, point)
+        ...
 
     def _get_closest_cluster_center(self, sample: np.ndarray) -> Tuple[int, float]:
         """
         Определяет ближайший центр кластера для точки из переданного набора данных и расстояние до него.
         Hint: для ускорения кода используйте min с генератором.
         """
-        min_index = -1
-        min_dist = np.inf
-        for cluster_center_index, cluster_center in enumerate(self._clusters_centers):
-            dist = distance(cluster_center, sample)
-            if dist > min_dist:
-                continue
-            min_index = cluster_center_index
-            min_dist = dist
-        return min_index, min_dist
+        return -1, 0.0
 
     def fit(self, data: np.ndarray) -> None:
         """
@@ -204,9 +170,7 @@ class MShift:
         # 2. Присваивание аргументов внутренним полям класса.
         # 3. Сдвиг точек в направлении средних значений вокруг них ("_shift_cluster_points").
         """
-        self._data = data
-        self._clear_current_clusters()
-        self._shift_cluster_points()
+        ...
 
     def show(self):
         draw_clusters(self.clusters, cluster_centers=self._clusters_centers, title="Mean shift clustering")
@@ -216,13 +180,12 @@ def separated_clusters():
     """
     Пример с пятью разрозненными распределениями точек на плоскости.
     """
-    n = 1024
     m_means = MShift()
-    clusters_data = np.vstack((gaussian_cluster(cx=0.5, n_points=n),
-                               gaussian_cluster(cx=1.0, n_points=n),
-                               gaussian_cluster(cx=1.5, n_points=n),
-                               gaussian_cluster(cx=2.0, n_points=n),
-                               gaussian_cluster(cx=2.5, n_points=n)))
+    clusters_data = np.vstack((gaussian_cluster(cx=0.5, n_points=1024),
+                               gaussian_cluster(cx=1.0, n_points=1024),
+                               gaussian_cluster(cx=1.5, n_points=1024),
+                               gaussian_cluster(cx=2.0, n_points=1024),
+                               gaussian_cluster(cx=2.5, n_points=1024)))
     m_means.fit(clusters_data)
     m_means.show()
 
@@ -232,7 +195,7 @@ def merged_clusters():
     Пример с кластеризацией пятна.
     """
     m_means = MShift()
-    m_means.fit(gaussian_cluster(n_points=100))
+    m_means.fit(gaussian_cluster(n_points=1024))
     m_means.show()
 
 
