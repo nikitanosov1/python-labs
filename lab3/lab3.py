@@ -241,7 +241,6 @@ def log_reg_test_data(k: float = -1.5, b: float = 0.1, arg_range: float = 1.0,
 
 def sigmoid(x: np.ndarray) -> np.ndarray:
     """
-    Ты не поверишь...
     :param x:
     :return:
     """
@@ -273,6 +272,7 @@ def draw_logistic_data(features: np.ndarray, groups: np.ndarray, theta: np.ndarr
         plt.show()
         return
 
+    # theta[1] * x + theta[2] * y + theta[0] * 1 = 0 
     b = theta[0] / np.abs(theta[2])
     k = theta[1] / np.abs(theta[2])
 
@@ -304,7 +304,7 @@ class LogisticRegression:
         self._learning_rate: float = 0
         # точность к которой мы стремимся
         self._learning_accuracy: float = 0
-        # колическто присзнаков одной группы
+        # колическто признаков одной группы
         self._group_features_count = 0
         # параметры тетта (подробное описание в pdf файле)
         self._thetas: Union[np.ndarray, None] = None
@@ -388,13 +388,14 @@ class LogisticRegression:
         # реализация градиентного спуска для обучения логистической регрессии.
         # формула thetas(i) = thetas(i - 1) - learning_rate * (X^T * sigmoid(X *  thetas(i - 1)) - groups)
 
-        self._group_features_count = features.shape[1]  # Проверяется размерность данных: количество признаков группы должно быть равно количеству элементов в столбце
+        self._group_features_count = features.shape[1]  # количество признаков у группы (в нашем случае их 2 - это x и y)
         self._thetas: np.ndarray = np.array([rand_in_range(1000) for _ in range(self._group_features_count + 1)]) # Инициализируются параметры модели (веса) thetas случайными значениями
-        x = np.hstack((np.ones((features.shape[0], 1), dtype=float), features))
+        # _thetas в нашем случае - это СТОЛБЕЦ из трех рандомных чисел
+        # theta[0] * 1 + theta[1] * x + theta[2] * y = 0 
 
+        x = np.hstack((np.ones((features.shape[0], 1), dtype=float), features)) # Добавили слева столбец единиц к точкам (типо b = 1)
         # К признакам добавляется столбец из единиц для учета свободного члена
         # Добавление столбца из единиц позволяет нам умножать его на соответствующий параметр thetas
-
         for iteration in range(self.max_train_iters):   # Запускается цикл обучения с использованием градиентного спуска. На каждой итерации обновляются параметры модели согласно формуле градиентного спуска
             thetas = self.thetas.copy()
             self._thetas = self._thetas - self.learning_rate * (x.T @ (sigmoid(x @ thetas) - groups))
@@ -403,6 +404,8 @@ class LogisticRegression:
 
 
 def lin_reg_test():
+    # features - массив точек, group - массив классов (если 1, то красная типо, если 0, то точка синяя)
+    # Точку характеризует x y на i-ой позиции в features и её класс на i-ой позиции в group
     features, group = log_reg_test_data()
     lg = LogisticRegression()
     lg.train(features, group)
