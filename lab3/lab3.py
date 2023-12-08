@@ -31,16 +31,16 @@ d/dx_j ln(f(b + (X,T))) = d/dx_j f(b + (X,T))/f(b + (X,T)) = x_j * (1 - f(b + (X
 """
 
 _debug_mode = True
-_accuracy  = 1e-6
+_accuracy = 1e-6
 Vector2Int = Tuple[int, int]
-Vector2    = Tuple[float, float]
-Section    = Tuple[Vector2, Vector2]
+Vector2 = Tuple[float, float]
+Section = Tuple[Vector2, Vector2]
 EmptyArray = np.ndarray([])
 
 
 def march_squares_2d(field: Callable[[float, float], float],
                      min_bound: Vector2 = (-5.0, -5.0),
-                     max_bound: Vector2 = ( 5.0,  5.0),
+                     max_bound: Vector2 = (5.0,  5.0),
                      march_resolution: Vector2Int = (128, 128),
                      threshold: float = 0.5) -> List[Section]:
     """
@@ -73,7 +73,7 @@ def march_squares_2d(field: Callable[[float, float], float],
     for i in range(cols_ * rows_):
         state = 0
         row = (i // cols_) * dy + min_bound[1]
-        col = (i %  cols_) * dx + min_bound[0]
+        col = (i % cols_) * dx + min_bound[0]
 
         a_val = field(col,      row)
         b_val = field(col + dx, row)
@@ -206,12 +206,14 @@ def log_reg_ellipsoid_test_data(params: Tuple[float, float, float, float, float]
               f"arg_range =  [{-arg_range * 0.5:1.3}, {arg_range * 0.5:1.3}],\n"
               f"rand_range = [{-rand_range * 0.5:1.3}, {rand_range * 0.5:1.3}]")
     features = np.zeros((n_points, 5), dtype=float)
-    features[:, 0] = np.array([rand_in_range(arg_range) for _ in range(n_points)])
-    features[:, 1] = np.array([rand_in_range(arg_range) for _ in range(n_points)])
+    features[:, 0] = np.array([rand_in_range(arg_range)
+                              for _ in range(n_points)])
+    features[:, 1] = np.array([rand_in_range(arg_range)
+                              for _ in range(n_points)])
     features[:, 2] = features[:, 0] * features[:, 1]
     features[:, 3] = features[:, 0] * features[:, 0]
     features[:, 4] = features[:, 1] * features[:, 1]
-    groups =  np.array(
+    groups = np.array(
         [np.sign(ellipsoid(features[i, 0], features[i, 1], params)) * 0.5 + 0.5 for i in range(n_points)])
     return features, groups
 
@@ -232,8 +234,10 @@ def log_reg_test_data(k: float = -1.5, b: float = 0.1, arg_range: float = 1.0,
               f"arg_range = [{-arg_range * 0.5:1.3}, {arg_range * 0.5:1.3}],\n"
               f"rand_range = [{-rand_range * 0.5:1.3}, {rand_range * 0.5:1.3}]")
     features = np.zeros((n_points, 2), dtype=float)
-    features[:, 0] = np.array([rand_in_range(arg_range) for _ in range(n_points)])
-    features[:, 1] = np.array([rand_in_range(arg_range) for _ in range(n_points)])
+    features[:, 0] = np.array([rand_in_range(arg_range)
+                              for _ in range(n_points)])
+    features[:, 1] = np.array([rand_in_range(arg_range)
+                              for _ in range(n_points)])
     groups = np.array(
         [1 if features[i, 0] * k + b > features[i, 1] + rand_in_range(rand_range) else 0.0 for i in range(n_points)])
     return features, groups
@@ -272,7 +276,7 @@ def draw_logistic_data(features: np.ndarray, groups: np.ndarray, theta: np.ndarr
         plt.show()
         return
 
-    # theta[1] * x + theta[2] * y + theta[0] * 1 = 0 
+    # theta[1] * x + theta[2] * y + theta[0] * 1 = 0
     b = theta[0] / np.abs(theta[2])
     k = theta[1] / np.abs(theta[2])
 
@@ -311,8 +315,8 @@ class LogisticRegression:
         # текущее знаение функции потерь
         self._losses: float = 0.0
 
-        self.max_train_iters   = max_iters
-        self.learning_rate     = learning_rate
+        self.max_train_iters = max_iters
+        self.learning_rate = learning_rate
         self.learning_accuracy = accuracy
 
     def __str__(self):
@@ -388,18 +392,25 @@ class LogisticRegression:
         # реализация градиентного спуска для обучения логистической регрессии.
         # формула thetas(i) = thetas(i - 1) - learning_rate * (X^T * sigmoid(X *  thetas(i - 1)) - groups)
 
-        self._group_features_count = features.shape[1]  # количество признаков у группы (в нашем случае их 2 - это x и y)
-        self._thetas: np.ndarray = np.array([rand_in_range(1000) for _ in range(self._group_features_count + 1)]) # Инициализируются параметры модели (веса) thetas случайными значениями
+        # количество признаков у группы (в нашем случае их 2 - это x и y)
+        self._group_features_count = features.shape[1]
+        # Инициализируются параметры модели (веса) thetas случайными значениями
+        self._thetas: np.ndarray = np.array(
+            [rand_in_range(1000) for _ in range(self._group_features_count + 1)])
         # _thetas в нашем случае - это СТОЛБЕЦ из трех рандомных чисел
-        # theta[0] * 1 + theta[1] * x + theta[2] * y = 0 
+        # theta[0] * 1 + theta[1] * x + theta[2] * y = 0
 
-        x = np.hstack((np.ones((features.shape[0], 1), dtype=float), features)) # Добавили слева столбец единиц к точкам (типо b = 1)
+        # Добавили слева столбец единиц к точкам (типо b = 1)
+        x = np.hstack((np.ones((features.shape[0], 1), dtype=float), features))
         # К признакам добавляется столбец из единиц для учета свободного члена
         # Добавление столбца из единиц позволяет нам умножать его на соответствующий параметр thetas
-        for iteration in range(self.max_train_iters):   # Запускается цикл обучения с использованием градиентного спуска. На каждой итерации обновляются параметры модели согласно формуле градиентного спуска
+        # Запускается цикл обучения с использованием градиентного спуска. На каждой итерации обновляются параметры модели согласно формуле градиентного спуска
+        for iteration in range(self.max_train_iters):
             thetas = self.thetas.copy()
-            self._thetas = self._thetas - self.learning_rate * (x.T @ (sigmoid(x @ thetas) - groups))
-            if (np.power(thetas - self.thetas, 2.0).sum()) <= self.learning_accuracy * self.learning_accuracy: # Проверяется условие остановки: если разница между предыдущими и текущими значениями параметров модели становится меньше заданной точности, то обучение завершается
+            self._thetas = self._thetas - self.learning_rate * \
+                (x.T @ (sigmoid(x @ thetas) - groups))
+            # Проверяется условие остановки: если разница между предыдущими и текущими значениями параметров модели становится меньше заданной точности, то обучение завершается
+            if (np.power(thetas - self.thetas, 2.0).sum()) <= self.learning_accuracy * self.learning_accuracy:
                 break
 
 
@@ -440,4 +451,3 @@ if __name__ == "__main__":
     lin_reg_test()
     non_lin_reg_test()
     ...
-
